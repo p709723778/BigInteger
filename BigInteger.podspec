@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BigInteger"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.summary      = "BigInteger(大数据处理)."
   s.homepage     = "https://github.com/p709723778/BigInteger"
@@ -17,15 +17,18 @@ Pod::Spec.new do |s|
   # s.ios.deployment_target = '5.0'
   # s.osx.deployment_target = '10.7'
   
-
   s.public_header_files = 'BigInteger/**/*.h'
   #s.source_files  = 'BigInteger', 'BigInteger/**/*.{h,m}'
   #s.exclude_files = 'BigInteger/Exclude'
 
   s.subspec 'JKBigInteger' do |ss|
-    ss.source_files = 'BigInteger/JKBigInteger/JK{BigInteger}.{h,m}','BigInteger/JKBigInteger/LibTomMath/tommath{_class,_superclass}.{h,c}','BigInteger/JKBigInteger/LibTomMath/tommath.{h}'
+    ss.source_files = 'BigInteger/JKBigInteger/JK{BigInteger}.{h,m}'
     #ss.ios.frameworks = 'Foundation', 'CoreGraphics'
     #ss.osx.frameworks = 'CoreServices'
+    ss.subspec 'LibTomMath' do |sss|
+      sss.source_files = 'BigInteger/JKBigInteger/LibTomMath/tommath{_class,_superclass}.{h,c}','BigInteger/JKBigInteger/LibTomMath/tommath.{h}'
+    end
+	
   end
   
   s.subspec 'STBigInteger' do |ss|
